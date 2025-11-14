@@ -79,22 +79,42 @@
 
 ---
 
-## 项目结构（示例）
+## 📁 项目结构
+
 
 src/
-├─ main/java/com/lyb/  
-│ ├─ algorithm / # KNN 推荐算法实现  
-│ ├─ common / # 常用  
-│ ├─ constant / # 常量  
-│ ├─ controller/ # 控制层  
-│ ├─ service/ # 业务层  
-│ ├─ mapper/ # MyBatis-Plus Mapper  
-│ ├─ model/ # 实体类  
-│ ├─ config/ # 配置（JWT、OSS、Druid 等）  
-│ └─ recommend/ # KNN 推荐算法实现  
-└─ resources/  
-├─ application.yml # 配置文件  
-└─ mapper/ # SQL 映射文件  
+├─img
+│ ├─avatorImages
+│ ├─singerPic
+│ ├─songListPic
+│ ├─songPic
+│ └─swiper
+├─song
+├─src
+│ ├─main
+│ │ ├─java
+│ │ │ └─com
+│ │ │ └─lyb
+│ │ │ └─olinemusicserver
+│ │ │ ├─algorithm
+│ │ │ ├─common
+│ │ │ ├─config
+│ │ │ ├─constant
+│ │ │ ├─controller
+│ │ │ ├─mapper
+│ │ │ ├─model
+│ │ │ │ ├─domain
+│ │ │ │ └─request
+│ │ │ ├─service
+│ │ │ │ └─impl
+│ │ │ └─util
+│ │ └─resources
+│ │ └─mapper
+│ └─test
+│ └─java
+│ └─com
+│ └─lyb
+│ └─olinemusicserver
 
 
 ---
