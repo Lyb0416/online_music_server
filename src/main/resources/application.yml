@@ -36,7 +36,4 @@ mybatis-plus:
 #阿里云
 aliyun:
   oss:
-    endPoint: oss-cn-guangzhou.aliyuncs.com
-    accessKeyId: LTAI5tHw7AttafEH4wVUHBZ1
-    accessKeySecret: 8dUddniimT3lOO2YR2y6x1IOuAtnXK
-    bucketName: online-music-oss-lyb
+
