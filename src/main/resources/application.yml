@@ -36,4 +36,4 @@ mybatis-plus:
 #阿里云
 aliyun:
   oss:
-
+    endPoint: oss-
