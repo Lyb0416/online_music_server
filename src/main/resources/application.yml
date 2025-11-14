@@ -37,3 +37,6 @@ mybatis-plus:
 aliyun:
   oss:
     endPoint: oss-
+    accessKeyId:
+    accessKeySecret:
+    bucketName: online-music-oss-lyb
