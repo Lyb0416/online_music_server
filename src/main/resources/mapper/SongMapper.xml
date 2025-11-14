@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.olinemusicserver.mapper.SongMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyb.olinemusicserver.model.domain.Song">
+            <id property="id" column="id" />
+            <result property="singerId" column="singer_id" />
+            <result property="name" column="name" />
+            <result property="introduction" column="introduction" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+            <result property="pic" column="pic" />
+            <result property="lyric" column="lyric" />
+            <result property="url" column="url" />
+    </resultMap>
+
+    <resultMap id="SongResultMap" extends="BaseResultMap" type="com.lyb.olinemusicserver.model.domain.Song">
+        <result property="lyric" column="lyric" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,singer_id,name,introduction,create_time,update_time,
+        pic,lyric,url
+    </sql>
+    <select id="selectSongListByListId" resultType="com.lyb.olinemusicserver.model.domain.Song">
+        SELECT s.*
+        FROM song s INNER JOIN list_song l ON s.id = l.song_id
+        WHERE l.song_list_id = #{songListId}
+    </select>
+    <select id="selectCollectSongByUserId" resultMap="BaseResultMap">
+        SELECT s.`id`,s.`singer_id`,s.`name`,s.`introduction`,s.`pic`,s.`url`
+        FROM song s LEFT JOIN collect c ON s.id=c.song_id
+        WHERE c.user_id=#{userId}
+    </select>
+        <!-- 查询所有歌曲ID 集合 -->
+    <select id="selectAllSongIds" resultType="java.lang.Integer">
+        select id from song
+    </select>
+        <!--  获取用户的推荐数据-->
+    <select id="selectAllRecommendSongList"
+            resultType="com.lyb.olinemusicserver.model.domain.Song">
+        select s.`id`,
+        s.`singer_id`,
+        s.`name`,
+        s.`introduction`,
+        s.`create_time`,
+        s.`update_time`,
+        s.`pic`,
+        s.`url`
+        from `recommend` r
+        join `song` s on r.`song_id` = s.`id`
+        <where>
+            <if test="userId != null">
+                r.`user_id` = #{userId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

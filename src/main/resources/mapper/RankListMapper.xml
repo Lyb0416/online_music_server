@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.olinemusicserver.mapper.RankListMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyb.olinemusicserver.model.domain.RankList">
+            <id property="id" column="id" />
+            <result property="songListId" column="song_list_id" />
+            <result property="consumerId" column="consumer_id" />
+            <result property="score" column="score" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,song_list_id,consumer_id,score
+    </sql>
+    <select id="selectScoreSum" resultType="java.lang.Integer">
+        SELECT COALESCE(sum(score), 0) as score from rank_list where song_list_id = #{0} ;
+    </select>
+</mapper>

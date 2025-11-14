@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.olinemusicserver.mapper.CommentMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyb.olinemusicserver.model.domain.Comment">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id" />
+            <result property="songId" column="song_id" />
+            <result property="songListId" column="song_list_id" />
+            <result property="content" column="content" />
+            <result property="createTime" column="create_time" />
+            <result property="type" column="type" />
+            <result property="up" column="up" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,song_id,song_list_id,content,create_time,
+        type,up
+    </sql>
+    <select id="selectCommentListBySongListId"
+            resultType="com.lyb.olinemusicserver.model.domain.Comment">
+        select c.id, c.user_id, c.song_id, c.song_list_id, c.content, c.create_time, c.type, c.up, u.username as userName
+        from `comment` c, `consumer` u
+        where c.user_id = u.id
+          and c.song_list_id = #{songListId}
+    </select>
+    <select id="selectCommentListBySongId" resultType="com.lyb.olinemusicserver.model.domain.Comment">
+        select c.id, c.user_id, c.song_id, c.song_list_id, c.content, c.create_time, c.type, c.up, u.username as userName
+        from `comment` c, `consumer` u
+        where c.user_id = u.id
+          and c.song_id = #{songId}
+    </select>
+
+    <!--  更新点赞数：用于用户点赞或取消点赞-->
+    <update id="updateUpById">
+        update comment set up = up + #{up} where id = #{id}
+    </update>
+</mapper>

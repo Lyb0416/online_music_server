@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyb.olinemusicserver.mapper.RecommendMapper">
+
+    <resultMap id="BaseResultMap" type="com.lyb.olinemusicserver.model.domain.Recommend">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id" />
+            <result property="songId" column="song_id" />
+            <result property="recommendLevel" column="recommend_level" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,song_id,recommend_level,create_time
+    </sql>
+
+    <!-- 根据用户id删除该用户推荐记录-->
+    <delete id="deleteByUserId" parameterType="int">
+        DELETE FROM recommend WHERE user_id = #{userId}
+    </delete>
+
+    <!-- 批量插入用户推荐记录 -->
+    <insert id="batchInsert">
+        insert into recommend(user_id,song_id, create_time) values
+        <foreach collection="param2" item="songId" open="" close="" separator=",">
+            (#{param1},#{songId}, now())
+        </foreach>
+    </insert>
+</mapper>
