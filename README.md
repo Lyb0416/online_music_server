@@ -82,19 +82,19 @@
 ## 项目结构（示例）
 
 src/
-├─ main/java/com/lyb/
-│ ├─ algorithm / # KNN 推荐算法实现
-│ ├─ common / # 常用
-│ ├─ constant / # 常量
-│ ├─ controller/ # 控制层
-│ ├─ service/ # 业务层
-│ ├─ mapper/ # MyBatis-Plus Mapper
-│ ├─ model/ # 实体类
-│ ├─ config/ # 配置（JWT、OSS、Druid 等）
-│ └─ recommend/ # KNN 推荐算法实现
-└─ resources/
-├─ application.yml # 配置文件
-└─ mapper/ # SQL 映射文件
+├─ main/java/com/lyb/  
+│ ├─ algorithm / # KNN 推荐算法实现  
+│ ├─ common / # 常用  
+│ ├─ constant / # 常量  
+│ ├─ controller/ # 控制层  
+│ ├─ service/ # 业务层  
+│ ├─ mapper/ # MyBatis-Plus Mapper  
+│ ├─ model/ # 实体类  
+│ ├─ config/ # 配置（JWT、OSS、Druid 等）  
+│ └─ recommend/ # KNN 推荐算法实现  
+└─ resources/  
+├─ application.yml # 配置文件  
+└─ mapper/ # SQL 映射文件  
 
 
 ---
