@@ -59,6 +59,7 @@ src/
    ├─ application.yml     # 配置文件（数据库、Redis、OSS、Alipay）
    └─ mapper/             # XML SQL 配置
 ```
+
 ---
 
 ## 🛠 技术栈
